@@ -4,7 +4,7 @@
 #Include lib/Processor.ahk
 
 /**
- * ARCHIVO PRINCIPAL: The Time Judge v2.0
+ * ARCHIVO PRINCIPAL: The Time Judge v1.0
  * Este script coordina la Interfaz Gráfica (GUI) con los módulos de rastreo y procesamiento.
  */
 
@@ -23,7 +23,7 @@ A_TrayMenu.Default := "Abrir Interfaz"
 A_TrayMenu.ClickCount := 2
 
 ; --- Construcción de la Interfaz (UX Moderno) ---
-MainGui := Gui(, "The Time Judge v2.0")
+MainGui := Gui(, "The Time Judge v1.0")
 ActualizarIconos("Detenido") ; Establecemos el estado visual inicial
 MainGui.SetFont("s10", "Segoe UI") 
 
