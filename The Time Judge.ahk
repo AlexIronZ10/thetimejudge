@@ -25,6 +25,7 @@ A_TrayMenu.ClickCount := 2
 ; --- Construcción de la Interfaz (UX Moderno) ---
 MainGui := Gui(, "The Time Judge v1.0")
 ActualizarIconos("Detenido") ; Establecemos el estado visual inicial
+OnMessage(0x0112, DetectarMinimizar) ; Capturamos los eventos del botón de minimizar en la ventana
 MainGui.SetFont("s10", "Segoe UI") 
 
 ; Limpiamos la ruta del archivo para mostrar solo el nombre al usuario (más estético)
@@ -104,6 +105,8 @@ IniciarRastreo(*) {
     A_TrayMenu.Enable("Detener Rastreo")
     StatusText.Value := "🟢 Rastreando actividad..."
     StatusText.Opt("cGreen")
+    MainGui.Hide()
+    TrayTip("The Time Judge sigue trabajando en segundo plano...")
     SetTimer(TrackActivity, 1000) 
     MsgBox("Rastreo iniciado.", "The Time Judge - Rastreo", "Iconi T3")
 }
@@ -208,6 +211,18 @@ ActualizarIconos(Estado) {
     hIcon := LoadPicture(Ruta, "w32 h32", &Tipo)
     SendMessage(0x80, 0, hIcon, MainGui.Hwnd) ; Icono pequeño
     SendMessage(0x80, 1, hIcon, MainGui.Hwnd) ; Icono grande
+}
+
+/**
+ * Si se minimiza teniendo iniciado un rastreador escondemos en la bandeja del sistema la aplicación.
+ */
+DetectarMinimizar(wParam, lParam, msg, hwnd) {
+    if (wParam = 0xF020 && hwnd = MainGui.Hwnd && TrackingActive) {
+        MainGui.Hide()
+        TrayTip("The Time Judge sigue trabajando en segundo plano...")
+        SetTimer(() => TrayTip(), -2500)
+        return 0
+    }
 }
 
 /**
