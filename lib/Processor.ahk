@@ -91,38 +91,21 @@ GenerateReport(StatsMap) {
  * Crea un archivo .csv optimizado para Microsoft Excel.
  */
 ExportarCSV(Datos, NombreArchivo) {
-    ; La instrucción "sep=;" le dice a Excel (sin importar el idioma del PC) 
-    ; que el separador de columnas es el punto y coma.
-    Contenido := "sep=;`n"
-    ; Usamos punto y coma (;) como delimitador porque es el estándar en regiones de habla hispana,
-    ; asegurando que Excel abra las columnas automáticamente sin configuración extra.
-    Contenido .= "Actividad;Tiempo (ms);Tiempo (Horas);Tiempo (Minutos);Tiempo (Segundos)`n"
+    ; Usamos UTF-16 porque es el formato nativo de Windows, evitamos incompatibilidades con diversas configuraciones regionales
+    Archivo := FileOpen(NombreArchivo, "w", "UTF-16")
+    
+    ; Escribimos los encabezados separados por tabulación `t
+    Archivo.WriteLine("Actividad`tTiempo (ms)`tTiempo (Horas)`tTiempo (Minutos)`tTiempo (Segundos)")
     
     for Titulo, Tiempo in Datos {
-        ; El punto y coma es nuestro delimitador; si el título de la ventana contiene uno,
-        ; lo cambiamos por una coma para evitar que se desplace el contenido a otra celda.
-        TituloLimpio := StrReplace(Titulo, ";", ",") 
-        
-        ; Ofrecemos diferentes unidades de medida para que el usuario pueda 
-        ; crear sus propios gráficos o tablas dinámicas fácilmente.
         Horas := Tiempo / 3600
         Minutos := Tiempo / 60
-        Miliseg  := Tiempo * 1000
+        Miliseg := Tiempo * 1000
         
-        ; Construimos la fila
-        Contenido .= TituloLimpio ";"
-                . Miliseg  ";" 
-                . Format("{:.2f}", Horas) ";" 
-                . Format("{:.2f}", Minutos) ";" 
-                . Format("{:.1f}", Tiempo) "`n"
+        ; Construimos la fila usando `t como separador
+        Linea := Titulo "`t" Miliseg "`t" Format("{:.2f}", Horas) "`t" Format("{:.2f}", Minutos) "`t" Format("{:.1f}", Tiempo)
+        Archivo.WriteLine(Linea)
     }
     
-    ; Excel suele fallar al interpretar UTF-8 si no detecta la "marca de orden de bytes" (BOM).
-    ; Escribimos manualmente el BOM (EF BB BF) para garantizar compatibilidad con tildes y eñes.
-    FileObj := FileOpen(NombreArchivo, "w", "UTF-8-RAW")
-    FileObj.Write(Chr(0xEF) Chr(0xBB) Chr(0xBF)) 
-    FileObj.Write(Contenido)
-    FileObj.Close()
-    
-    return true
+    Archivo.Close()
 }
