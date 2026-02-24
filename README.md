@@ -35,5 +35,19 @@
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
+## ⚠️ Antivirus Note
+
+Some antivirus software (like Windows Defender or Chrome Safe Browsing) may flag the .exe file as a "False Positive".
+
+Why does this happen? > This is a common occurrence with scripts compiled via AutoHotkey. Since the executable contains a script runner, some security engines flag it as "unknown software."
+
+How to fix it:
+
+If Windows Defender blocks the launch, click on "More info" and then "Run anyway".
+
+You can also add the .exe to your antivirus Exclusion List.
+
+For total peace of mind, you can audit the source code in this repository and compile the .exe yourself using Ahk2Exe.
+
 ---
 *Created by Alex IronZ10*
