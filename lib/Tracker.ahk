@@ -8,15 +8,18 @@ Global CurrentTitle := ""
 Global StartTime := A_TickCount
 
 /**
- * Genera un nombre de archivo incremental (Activity_Log2, 3...)
+ * Genera un nombre de archivo incremental (Activity_Log2, 3...) en la carpeta "logs"
  * para asegurar que cada ejecución sea tratada como una sesión independiente
  * sin riesgo de pérdida de datos por colisión de nombres.
  */
 GetNewLogName(BaseName := "Activity_Log") {
+    CarpetaLogs := A_ScriptDir "\logs"
+    if !DirExist(CarpetaLogs)
+        DirCreate(CarpetaLogs)
     Loop {
         ActualName := (A_Index == 1) ? BaseName ".json" : BaseName A_Index ".json"
-        if !FileExist(A_ScriptDir "\" ActualName)
-            return A_ScriptDir "\" ActualName
+        if !FileExist(CarpetaLogs "\" ActualName)
+            return CarpetaLogs "\" ActualName
     }
 }
 
