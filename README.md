@@ -9,7 +9,7 @@
 * **Real-time Monitoring:** Automatically captures the title of the active window every second.
 * **Modular Architecture:** Clean separation between the GUI, the tracking engine, and the data processor.
 * **Smart Filtering:** Search through your logs using keywords (e.g., "Chrome", "Excel", "Project X").
-* **Global Compatibility:** Export your reports to CSV with universal Excel support (UTF-16).
+* **Global Compatibility:** Export your reports to CSV with universal Excel support (UTF-16 LE).
 * **Dynamic Interface:** Multi-tabbed GUI with progress bars and system tray integration (Active/Stopped status icons).
 * **Data Integrity:** Auto-saves sessions and prevents data loss through incremental JSON logging in the "log" folder.
 
