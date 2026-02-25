@@ -25,6 +25,7 @@ A_TrayMenu.ClickCount := 2
 ; --- Construcción de la Interfaz (UX Moderno) ---
 MainGui := Gui(, "The Time Judge v1.0.1")
 ActualizarIconos("Detenido") ; Establecemos el estado visual inicial
+A_IconTip := "Rastreo Detenido"
 OnMessage(0x0112, DetectarMinimizar) ; Capturamos los eventos del botón de minimizar en la ventana
 MainGui.SetFont("s10", "Segoe UI") 
 
@@ -101,6 +102,7 @@ IniciarRastreo(*) {
     BtnStart.Enabled := false
     BtnStop.Enabled := true
     ActualizarIconos("Activo")
+    A_IconTip := "Rastreo Iniciado"
     A_TrayMenu.Disable("Iniciar Rastreo")
     A_TrayMenu.Enable("Detener Rastreo")
     StatusText.Value := "🟢 Rastreando actividad..."
@@ -125,6 +127,7 @@ DetenerRastreo(*) {
     BtnStart.Enabled := true
     BtnStop.Enabled := false
     ActualizarIconos("Detenido")
+    A_IconTip := "Rastreo Detenido"
     A_TrayMenu.Enable("Iniciar Rastreo")
     A_TrayMenu.Disable("Detener Rastreo")
     StatusText.Value := "🔴 Detenido"
