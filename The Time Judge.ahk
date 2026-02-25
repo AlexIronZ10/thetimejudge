@@ -129,6 +129,7 @@ DetenerRastreo(*) {
     A_TrayMenu.Disable("Detener Rastreo")
     StatusText.Value := "🔴 Detenido"
     StatusText.Opt("cRed")
+    MainGui.Show()
     SetTimer(TrackActivity, 0) 
     MsgBox("Rastreo detenido.", "The Time Judge - Rastreo", "Iconi")
 }
