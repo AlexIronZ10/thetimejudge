@@ -9,13 +9,13 @@
 * **Real-time Monitoring:** Automatically captures the title of the active window every second.
 * **Modular Architecture:** Clean separation between the GUI, the tracking engine, and the data processor.
 * **Smart Filtering:** Search through your logs using keywords (e.g., "Chrome", "Excel", "Project X").
-* **Global Compatibility:** Export your reports to CSV with universal Excel support (`sep=;` and UTF-8 BOM).
+* **Global Compatibility:** Export your reports to CSV with universal Excel support (UTF-16).
 * **Dynamic Interface:** Multi-tabbed GUI with progress bars and system tray integration (Active/Stopped status icons).
-* **Data Integrity:** Auto-saves sessions and prevents data loss through incremental JSON logging.
+* **Data Integrity:** Auto-saves sessions and prevents data loss through incremental JSON logging in the "log" folder.
 
 ## 🚀 How to Use
 
-1.  **Start Tracking:** Choose a duration (or "Indefinite") and hit **Iniciar**. The icon in your system tray will turn green.
+1.  **Start Tracking:** Choose a duration (or "Indefinite") and hit **Iniciar**. The program will be saved in the system tray and the icon will turn green.
 2.  **Analyze Data:** Go to the **Reportes** tab to see your total activity.
 3.  **Filter Results:** Use the **Filtros** tab to find specific tasks or applications.
 4.  **Export:** Save your results as a `.csv` file to open them in Excel or Google Sheets.
