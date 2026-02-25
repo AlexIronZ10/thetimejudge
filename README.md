@@ -9,9 +9,10 @@
 * **Real-time Monitoring:** Automatically captures the title of the active window every second.
 * **Modular Architecture:** Clean separation between the GUI, the tracking engine, and the data processor.
 * **Smart Filtering:** Search through your logs using keywords (e.g., "Chrome", "Excel", "Project X").
-* **Global Compatibility:** Export your reports to CSV with universal Excel support (UTF-16 LE).
+* **Enhanced Excel Compatibility:** Native UTF-16 LE export ensures that special characters and accents look perfect in Microsoft Excel across all regions.
 * **Dynamic Interface:** Multi-tabbed GUI with progress bars and system tray integration (Active/Stopped status icons).
-* **Data Integrity:** Auto-saves sessions and prevents data loss through incremental JSON logging in the "log" folder.
+* **Data Integrity:** Auto-saves sessions and prevents data loss through incremental JSON logging into a dedicated /logs folder.
+* **Smart Minimize to Tray:** If tracking is active, minimizing the app hides it to the system tray to stay out of your way. If not, it behaves like a standard window.
 
 ## 🚀 How to Use
 
@@ -19,12 +20,14 @@
 2.  **Analyze Data:** Go to the **Reportes** tab to see your total activity.
 3.  **Filter Results:** Use the **Filtros** tab to find specific tasks or applications.
 4.  **Export:** Save your results as a `.csv` file to open them in Excel or Google Sheets.
+5.  **Pro Tip:** Hover your mouse over the tray icon while tracking to see the current status without opening the app!
 
 ## 📂 Project Structure
 
 * `TheTimeJudge.ahk`: Main entry point and GUI orchestrator.
 * `lib/Tracker.ahk`: Core engine for window detection and time calculation.
 * `lib/Processor.ahk`: Logic for data consolidation, filtering, and exporting.
+* `logs/`: Dedicated directory for all your activity records (auto-created).
 * Contains the dynamic status icons (`Green.ico`, `Red.ico`).
 
 ## 🛠️ Requirements
