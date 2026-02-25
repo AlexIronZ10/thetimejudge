@@ -1,4 +1,4 @@
-# ⚖️ The Time Judge v1.0
+# ⚖️ The Time Judge v1.0.1
 
 **The Time Judge** is a powerful, lightweight activity tracker for Windows built with **AutoHotkey v2**. It helps you monitor your productivity by logging active window usage, providing detailed reports, and allowing granular data filtering.
 
