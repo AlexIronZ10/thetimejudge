@@ -4,7 +4,7 @@
 #Include lib/Processor.ahk
 
 /**
- * ARCHIVO PRINCIPAL: The Time Judge v1.0
+ * ARCHIVO PRINCIPAL: The Time Judge v1.0.1
  * Este script coordina la Interfaz Gráfica (GUI) con los módulos de rastreo y procesamiento.
  */
 
@@ -23,7 +23,7 @@ A_TrayMenu.Default := "Abrir Interfaz"
 A_TrayMenu.ClickCount := 2
 
 ; --- Construcción de la Interfaz (UX Moderno) ---
-MainGui := Gui(, "The Time Judge v1.0")
+MainGui := Gui(, "The Time Judge v1.0.1")
 ActualizarIconos("Detenido") ; Establecemos el estado visual inicial
 OnMessage(0x0112, DetectarMinimizar) ; Capturamos los eventos del botón de minimizar en la ventana
 MainGui.SetFont("s10", "Segoe UI") 
